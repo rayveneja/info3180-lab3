@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block main %}
+<h1>Contact Form</h1>
+<form method="POST">
+    {{ form.csrf_token }}
+    <div>
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control", placeholder="Please enter your full name") }}<br>
+        {% for error in form.name.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.email.label }}<br>
+        {{ form.email(class="form-control", placeholder="Please enter your e-mail address") }}<br>
+        {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.subject.label }}<br>
+        {{ form.subject(class="form-control", placeholder="Please enter the subject for your message") }}<br>
+        {% for error in form.subject.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+    </div>
+    <div>
+        {{ form.message.label }}<br>
+        {{ form.message(class="form-control", placeholder="Please enter the message you would like to send") }}<br>
+        {% for error in form.message.errors %}
+            <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+{% endblock %}
